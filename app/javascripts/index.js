@@ -11,13 +11,13 @@ const DOM = {
   app: document.getElementById('app'),
 };
 
-const get = color =>
+const get = color => () =>
   fetch(`http://dictionary.${color}/verse?n=${CONFIG.size}`);
 
 const STATE = {
   queues: {
-    them: new Queue({ fetch: () => get('red') }),
-    me: new Queue({ fetch: () => get('pink') }),
+    them: new Queue({ fetch: get('red') }),
+    me: new Queue({ fetch: get('pink') }),
   },
   queue: 'them',
 };
