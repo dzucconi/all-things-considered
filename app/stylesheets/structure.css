@@ -1,0 +1,29 @@
+.app {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.chat {
+  flex: 1;
+  padding: 15px;
+  overflow-y: hidden;
+}
+
+.footer {
+  padding: 10px;
+}
+
+.input {
+  border: 2px solid #ccc;
+  border-radius: 25px;
+}
+
+.placeholder {
+  color: #777;
+}
