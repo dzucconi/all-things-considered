@@ -24,10 +24,11 @@
 
 .me,
 .them,
-.input {
-  padding: 5px 15px;
+.input,
+.indicator {
+  padding: 7px 15px;
   font-family: 'Helvetica Neue', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.25;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +36,8 @@
 }
 
 .me,
-.them {
+.them,
+.indicator {
   position: relative;
   margin: 5px 0;
   max-width: 255px;
@@ -50,7 +52,7 @@
     content: '';
     position: absolute;
     bottom: -2px;
-    height: 13px;
+    height: 15px;
   }
 
 @keyframes me {
@@ -106,11 +108,13 @@
   }
 }
 
-.them {
+.them,
+.indicator {
   background: #E5E5EA;
   color: black;
   float: left;
 }
+  .indicator,
   .them:last-child {
     animation: them 0.25s;
     animation-iteration-count: 1;

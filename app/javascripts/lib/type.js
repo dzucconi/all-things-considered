@@ -1,16 +1,16 @@
 import rand from './rand';
 
-export default (el, message) => {
+export default (el, message, range = [15, 250]) => {
   const letters = message.split('')
     .map(letter => `<span class='letter'>${letter}</span>`)
     .concat([' ', ' ', ' ']);
 
-  el.innerHTML = letters.shift();
+  el && (el.innerHTML = letters.shift());
 
   return letters.reduce((promise, letter) =>
     promise.then(() => new Promise(resolve => {
       setTimeout(() =>
-        resolve(el.innerHTML += letter)
-      , rand(15, 250));
+        resolve(el && (el.innerHTML += letter))
+      , rand(range[0], range[1]));
     })), Promise.resolve(true));
 };

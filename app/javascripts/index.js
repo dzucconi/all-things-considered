@@ -4,7 +4,7 @@ import * as is from './lib/is';
 import type from './lib/type';
 
 const CONFIG  = {
-  size: 5,
+  size: 25,
   speed: 1000,
 };
 
@@ -54,6 +54,21 @@ const send = () =>
     <div class='placeholder'>Message</div>
   `;
 
+const indicator = document.createElement('div');
+indicator.className = 'indicator';
+indicator.innerHTML = `
+  <span>●</span>
+  <span>●</span>
+  <span>●</span>
+`;
+
+const indicate = () => {
+  DOM.chat.appendChild(indicator);
+  DOM.chat.scrollTop = DOM.chat.scrollHeight;
+
+  return Promise.resolve(indicator);
+};
+
 const append = () => {
   take(STATE.queues[STATE.queue])
     .then(([message]) => {
@@ -63,10 +78,20 @@ const append = () => {
 
       return STATE.queue === 'me'
         ? type(DOM.input, message).then(() => html)
-        : Promise.resolve(html);
+
+        : indicate()
+          .then(() => type(null, message, [5, 100]))
+          .then(() => html);
     })
     .then(html => {
       if (STATE.queue === 'me') send();
+
+      // Remove indicator
+      try {
+        DOM.chat.removeChild(indicator);
+      } catch(e) {
+        // Ignore
+      }
 
       // Append message
       DOM.chat.innerHTML += html;
