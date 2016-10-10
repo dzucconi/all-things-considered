@@ -1,12 +1,17 @@
 import fetch from 'axios';
 import Queue from './lib/queue';
-import * as is from './lib/is';
 import type from './lib/type';
+import params from './lib/params';
+import * as is from './lib/is';
+import * as sounds from './lib/sounds';
 
 const CONFIG  = {
   size: 25,
   speed: 1000,
+  mute: true,
 };
+
+const PARAMS = params(CONFIG);
 
 const DOM = {
   app: document.getElementById('app'),
@@ -15,10 +20,8 @@ const DOM = {
   messages: document.getElementsByClassName('message'),
 };
 
-window.DOM = DOM;
-
 const get = color => () =>
-  fetch(`http://dictionary.${color}/verse?n=${CONFIG.size}`);
+  fetch(`http://dictionary.${color}/verse?n=${PARAMS.size}`);
 
 const STATE = {
   queues: {
@@ -86,6 +89,9 @@ const append = () => {
     .then(html => {
       if (STATE.queue === 'me') send();
 
+      // Play sound effects
+      if (!PARAMS.mute) sounds[STATE.queue === 'me' ? 'send' : 'receive'].play();
+
       // Remove indicator
       try {
         DOM.chat.removeChild(indicator);
@@ -109,7 +115,7 @@ const append = () => {
       STATE.queue = STATE.queue === 'them' ? 'me' : 'them';
     })
     .then(() =>
-      setTimeout(append, CONFIG.speed));
+      setTimeout(append, PARAMS.speed));
 };
 
 export default () => {
