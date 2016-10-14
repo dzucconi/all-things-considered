@@ -1,7 +1,8 @@
 import rand from './rand';
+import decode from './decode';
 
 export default (el, message, range = [15, 250]) => {
-  const letters = message.split('')
+  const letters = decode(message).split('')
     .map(letter => `<span class='letter'>${letter}</span>`)
     .concat([' ', ' ', ' ']);
 
