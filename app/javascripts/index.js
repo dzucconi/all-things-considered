@@ -4,6 +4,7 @@ import type from './lib/type';
 import params from './lib/params';
 import * as is from './lib/is';
 import * as sounds from './lib/sounds';
+import indicator from './lib/indicator';
 
 const CONFIG  = {
   size: 25,
@@ -56,14 +57,6 @@ const send = () =>
   DOM.input.innerHTML = `
     <div class='placeholder'>Message</div>
   `;
-
-const indicator = document.createElement('div');
-indicator.className = 'indicator';
-indicator.innerHTML = `
-  <span>●</span>
-  <span>●</span>
-  <span>●</span>
-`;
 
 const indicate = () => {
   DOM.chat.appendChild(indicator);
