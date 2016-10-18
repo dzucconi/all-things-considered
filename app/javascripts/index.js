@@ -5,6 +5,7 @@ import params from './lib/params';
 import * as is from './lib/is';
 import * as sounds from './lib/sounds';
 import indicator from './lib/indicator';
+import * as errors from './lib/errors';
 
 const CONFIG  = {
   size: 25,
@@ -45,9 +46,18 @@ const render = {
 };
 
 const cast = {
-  them: x => `${x}.`,
-  me: x => `${x}?`,
+  them: x => `${humanize(x)}.`,
+  me: x => `${humanize(x)}?`,
 };
+
+const humanize = x => x
+  .split('')
+  .map(x => {
+    if (errors.probability(0.1)) x = errors.transposition(x);
+    if (errors.probability(0.1)) x = errors.caps(x);
+    return x;
+  })
+  .join('');
 
 const trim = () =>
   Array.prototype.filter.call(DOM.messages, is.offscreen)
