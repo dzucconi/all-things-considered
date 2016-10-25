@@ -5,8 +5,8 @@ import Queue from './models/queue';
 import Chat from './models/chat';
 
 const PARAMS = params({
-  amount: 3,
-  size: 25,
+  amount: 1,
+  size: 30,
   pause: 1000,
   mute: true,
 });
