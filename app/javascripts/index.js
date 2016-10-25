@@ -5,7 +5,7 @@ import Queue from './models/queue';
 import Chat from './models/chat';
 
 export default () => {
-  const PARAMS = params({
+  const { size, amount, pause, mute } = params({
     amount: Math.floor(window.innerWidth / 320) || 1,
     size: 30,
     pause: 1000,
@@ -17,23 +17,23 @@ export default () => {
   };
 
   const them = new Queue({
-    fetch: () => fetch(`http://dictionary.red/verse?n=${PARAMS.size}`),
+    fetch: () => fetch(`http://dictionary.red/verse?n=${size}`),
   });
 
   const me = new Queue({
-    fetch: () => fetch(`http://dictionary.pink/verse?n=${PARAMS.size}`),
+    fetch: () => fetch(`http://dictionary.pink/verse?n=${size}`),
   });
 
   them.fill()
     .then(() => me.fill())
     .then(() => {
-      const chats = times(PARAMS.amount)
+      const chats = times(amount)
         .map(() =>
           new Chat({
             me,
             them,
-            pause: PARAMS.pause,
-            mute: PARAMS.mute
+            pause,
+            mute
           })
         );
 
