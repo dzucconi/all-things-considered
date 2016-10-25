@@ -1,11 +1,11 @@
 {
-  "name": "chat",
+  "name": "all-things-considered",
   "description": "",
   "author": "Damon Zucconi",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dzucconi/chat"
+    "url": "https://github.com/dzucconi/all-things-considered"
   },
   "scripts": {
     "test": "mocha test",
