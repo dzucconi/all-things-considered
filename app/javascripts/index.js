@@ -1,7 +1,7 @@
 import fetch from 'axios';
+import params from 'queryparams';
 import Queue from './lib/queue';
 import type from './lib/type';
-import params from './lib/params';
 import * as is from './lib/is';
 import * as sounds from './lib/sounds';
 import indicator from './lib/indicator';
