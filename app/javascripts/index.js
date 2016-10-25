@@ -9,7 +9,7 @@ export default () => {
     amount: Math.floor(window.innerWidth / 320) || 1,
     size: 30,
     pause: 1000,
-    mute: true,
+    mute: false,
   });
 
   const DOM = {
