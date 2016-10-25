@@ -1,12 +1,19 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
 .app {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   position: relative;
-  width: 100%;
   max-width: 640px;
   height: 100%;
   margin: 0 auto;
+  flex: 1;
 }
 
 .chat {
@@ -22,6 +29,7 @@
 .input {
   border: 1px solid #ccc;
   border-radius: 25px;
+  color: black;
 }
   .placeholder {
     color: #ccc;

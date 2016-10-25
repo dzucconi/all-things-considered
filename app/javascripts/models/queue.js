@@ -89,4 +89,12 @@ export default class Queue {
   peek() {
     return this.current[0];
   }
+
+  take() {
+    if (this.isEmpty()) {
+      return this.fill().then(() => this.dequeue());
+    }
+
+    return Promise.resolve(this.dequeue());
+  }
 }

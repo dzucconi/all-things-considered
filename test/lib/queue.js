@@ -1,4 +1,4 @@
-import Queue from '../../app/javascripts/lib/queue';
+import Queue from '../../app/javascripts/models/queue';
 
 describe('Queue', () => {
   it('works', () => {

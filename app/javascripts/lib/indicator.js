@@ -1,9 +1,10 @@
-const indicator = document.createElement('div');
-indicator.className = 'indicator';
-indicator.innerHTML = `
-  <span>●</span>
-  <span>●</span>
-  <span>●</span>
-`;
-
-export default indicator;
+export default () => {
+  const indicator = document.createElement('div');
+  indicator.className = 'indicator';
+  indicator.innerHTML = `
+    <span>●</span>
+    <span>●</span>
+    <span>●</span>
+  `;
+  return indicator;
+};
