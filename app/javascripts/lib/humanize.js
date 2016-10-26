@@ -1,8 +1,8 @@
 import * as errors from './errors';
 
-export default x =>
+export default (x, entropy) =>
   x.split('').map(x => {
-    if (errors.probability(0.05)) x = errors.transposition(x);
-    if (errors.probability(0.1)) x = errors.caps(x);
+    if (errors.probability(entropy)) x = errors.transposition(x);
+    if (errors.probability(entropy / 2)) x = errors.caps(x);
     return x;
   }).join('');

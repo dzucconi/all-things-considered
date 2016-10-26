@@ -5,12 +5,16 @@ import Queue from './models/queue';
 import Chat from './models/chat';
 
 export default () => {
-  const { size, amount, pause, mute } = params({
+  const { size, amount, pause, mute, invert, entropy } = params({
     amount: Math.floor(window.innerWidth / 320) || 1,
     size: 30,
     pause: 1000,
     mute: false,
+    invert: false,
+    entropy: 0.0,
   });
+
+  document.body.setAttribute('data-invert', invert);
 
   const DOM = {
     container: document.getElementById('container'),
@@ -33,7 +37,8 @@ export default () => {
             me,
             them,
             pause,
-            mute
+            mute,
+            entropy,
           })
         );
 

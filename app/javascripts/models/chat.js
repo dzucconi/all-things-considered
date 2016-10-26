@@ -3,15 +3,17 @@ import * as sounds from '../lib/sounds';
 import indicator from '../lib/indicator';
 import trim from '../lib/trim';
 import id from '../lib/id';
+import humanize from '../lib/humanize';
 
 export default class Chat {
-  constructor({ me, them, pause, mute }) {
+  constructor({ me, them, pause, mute, entropy }) {
     this.id = id();
     this.pause = pause;
     this.mute = mute;
     this.queues = { me, them };
     this.queue = 'them';
     this.indicator = indicator();
+    this.entropy = entropy;
   }
 
   bind() {
@@ -46,7 +48,10 @@ export default class Chat {
   }
 
   cast(x) {
-    return { them: `${x}.`, me: `${x}?` }[this.queue];
+    return {
+      them: `${humanize(x, this.entropy)}.`,
+      me: `${humanize(x, this.entropy)}?`
+    }[this.queue];
   }
 
   indicate() {
