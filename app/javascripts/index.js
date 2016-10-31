@@ -1,10 +1,14 @@
 import fetch from 'axios';
 import params from 'queryparams';
 import times from './lib/times';
+import * as is from './lib/is';
+import nosleep from './lib/nosleep';
 import Queue from './models/queue';
 import Chat from './models/chat';
 
 export default () => {
+  if (is.touch()) nosleep(15000);
+
   const { size, amount, pause, mute, invert, entropy } = params({
     amount: Math.floor(window.innerWidth / 320) || 1,
     size: 30,
