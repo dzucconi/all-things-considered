@@ -19,7 +19,7 @@
 .chat {
   flex: 1;
   padding: 15px;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .footer {
