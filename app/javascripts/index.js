@@ -1,11 +1,13 @@
 import fetch from 'axios';
-import params from 'queryparams';
+import parameters from 'queryparams';
 import times from './lib/times';
 import Queue from './models/queue';
 import Chat from './models/chat';
 
+window.parameters = parameters;
+
 export default () => {
-  const { size, amount, pause, mute, invert, entropy } = params({
+  const { size, amount, pause, mute, invert, entropy } = parameters({
     amount: Math.floor(window.innerWidth / 320) || 1,
     size: 30,
     pause: 1000,
